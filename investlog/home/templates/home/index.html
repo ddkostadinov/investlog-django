@@ -6,14 +6,18 @@
   <!-- ##### HERO ##### -->
   <header class="header d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
     <div id="hero" class="px-4 py-5 my-5 text-center">
-      <h1 id="hero-text" class="display-5 fw-bold">Rediscover investing</h1>
+      <h1 id="hero-text" class="display-5 fw-bold">Rediscover freedom</h1>
       <div class="col-lg-6 mx-auto">
         <p class="lead mb-4">
           Dive into a world of strategic financial growth, where every decision is a step towards securing your dreams. Join us in sculpting a legacy of success – because investing isn't just about numbers, it's about crafting a narrative of financial empowerment.
         </p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-          <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Sign up</button>
-          <button type="button" class="btn btn-dark btn-lg px-4">About Us</button>
+          <a href="{% url 'register' %}">
+            <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Sign up</button>
+          </a>
+          <a href="{% url 'about' %}">
+            <button type="button" class="btn btn-dark btn-lg px-4">About Us</button>
+          </a>
         </div>
       </div>
       <div class="b-example-divider"></div>
@@ -37,12 +41,6 @@
         </div>
         <h3 class="fs-2 text-body-emphasis">Intuitive Logging</h3>
         <p>Effortlessly log and track your investments in a user-friendly interface that simplifies the process.</p>
-        <a href="#" class="icon-link">
-          Call to action
-          <svg class="bi">
-            <use xlink:href="#chevron-right"></use>
-          </svg>
-        </a>
       </div>
       <div class="feature col">
         <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
@@ -59,12 +57,6 @@
         <p>
           Gain valuable insights into your portfolio's performance with advanced analysis tools, helping you make informed decisions and optimize your investment strategy.
         </p>
-        <a href="#" class="icon-link">
-          Call to action
-          <svg class="bi">
-            <use xlink:href="#chevron-right"></use>
-          </svg>
-        </a>
       </div>
       <div class="feature col">
         <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
@@ -83,12 +75,6 @@
         <p>
           Transform your investments into a digital diary, recording each transaction and providing a comprehensive overview of your financial journey.
         </p>
-        <a href="#" class="icon-link">
-          Call to action
-          <svg class="bi">
-            <use xlink:href="#chevron-right"></use>
-          </svg>
-        </a>
       </div>
     </div>
   </div>
@@ -106,20 +92,10 @@
         </p>
       </div>
       <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-             width="500"
-             height="500"
-             xmlns="http://www.w3.org/2000/svg"
-             role="img"
-             aria-label="Placeholder: 500x500"
-             preserveAspectRatio="xMidYMid slice"
-             focusable="false">
-          <title>Placeholder</title>
-          <rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>
-          <text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">
-          500x500
-          </text>
-        </svg>
+        <img src="https://images.pexels.com/photos/2539658/pexels-photo-2539658.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+             alt="building"
+             width="480"
+             height="500">
       </div>
     </div>
     <hr class="featurette-divider" />
@@ -131,15 +107,22 @@
       <div class="col-md-4">
         <div class="card p-3 text-center px-4">
           <div class="user-image">
-            <img src="https://i.imgur.com/PKHvlRS.jpg"
+            <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                  class="rounded-circle"
-                 width="80" />
+                 width="80"
+                 height="80" />
           </div>
           <div class="user-content">
             <h5 class="mb-0">James Hardaway</h5>
             <span>Project Manager</span>
             <p>
-              InvestLog has been a game-changer for my investment journey. The intuitive interface makes logging transactions a breeze, and the detailed portfolio analysis has given me invaluable insights into my investments. It's like having a personal financial advisor at my fingertips!
+              <br>
+              InvestLog has been a game-changer for my investment journey. The intuitive interface makes logging transactions a breeze,
+              <br>
+              and the detailed portfolio analysis has given me invaluable insights
+              <br>
+              into my investments.
+              It's like having a personal financial advisor at my fingertips!
             </p>
           </div>
           <div class="ratings">
@@ -153,15 +136,22 @@
       <div class="col-md-4">
         <div class="card p-3 text-center px-4">
           <div class="user-image">
-            <img src="https://i.imgur.com/w2CKRB9.jpg"
+            <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                  class="rounded-circle"
-                 width="80" />
+                 width="80"
+                 height="80" />
           </div>
           <div class="user-content">
             <h5 class="mb-0">William Parker</h5>
             <span>Web Developer</span>
             <p>
-              As a novice investor, InvestLog has been my go-to platform for learning and managing my portfolio. The digital investment diary feature helped me understand my progress, and the real-time market updates keep me informed. Exactly what I needed to kickstart my investment journey.
+              <br>
+              As a novice investor, InvestLog has been my go-to platform for learning and managing my portfolio. The digital investment diary feature helped me understand my progress, and the
+              real-time market
+              updates
+              keep me informed.
+              Exactly what I
+              needed to kickstart my investment journey.
             </p>
           </div>
           <div class="ratings">
@@ -176,15 +166,17 @@
       <div class="col-md-4">
         <div class="card p-3 text-center px-4">
           <div class="user-image">
-            <img src="https://i.imgur.com/ACeArwY.jpg"
+            <img src="https://images.pexels.com/photos/1520760/pexels-photo-1520760.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                  class="rounded-circle"
-                 width="80" />
+                 width="80"
+                 height="80" />
           </div>
           <div class="user-content">
             <h5 class="mb-0">Linda Smith</h5>
             <span>Financial Analyst</span>
             <p>
-              InvestLog isn't just an app; it's been my financial companion in achieving my investment goals. The goal tracking feature helped me stay focused, and the collaborative community allowed me to exchange ideas with other investors. I've turned my financial aspirations into a reality!
+              <br>
+              InvestLog has been my financial companion in achieving my investment goals. The goal tracking feature helped me stay focused, and the collaborative community allowed me to exchange ideas with other investors. I've turned my financial aspirations into a reality!
             </p>
           </div>
           <div class="ratings">
