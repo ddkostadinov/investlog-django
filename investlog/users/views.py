@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.views import View
@@ -53,6 +53,6 @@ class CustomLoginView(View):
 class LogOutView(LoginRequiredMixin, View):
     #TODO: add a Logout Button in home/index.html and to dashboard settings
     def get(self, request):
-        logout()
-        return render(request, 'home/index.html')
+        logout(request)
+        return redirect('index')
         

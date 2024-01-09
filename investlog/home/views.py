@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from django.contrib.staticfiles.views import serve
 
-# Create your views here.
 def index(request):
-    return render(request, 'home/index.html')
+    context = {'user': request.user}
+    return render(request, 'home/index.html', context)
 
 def about(request):
-    return render(request, 'home/about.html')
+    context = {'user': request.user}
+    return render(request, 'home/about.html', context)
 
 def contact(request):
-    return render(request, 'home/contact.html')
+    context = {'user': request.user}
+    return render(request, 'home/contact.html', context)
