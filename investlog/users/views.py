@@ -38,7 +38,7 @@ class CustomLoginView(View):
         
         if user is not None:
             login(request, user)
-            return render(request, 'dashboard/index.html')
+            return redirect("dashboard")
         else:
             return render(request, 'users/login.html', {
             'form': form
