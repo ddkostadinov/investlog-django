@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.views import View
 from django.contrib.auth.models import User
 from .forms import UserRegisterForm, UserLoginForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class RegisterView(View):
@@ -48,4 +49,10 @@ class CustomLoginView(View):
         return render(request, 'users/login.html', {
             'form': form
         })
+        
+class LogOutView(LoginRequiredMixin, View):
+    #TODO: add a Logout Button in home/index.html and to dashboard settings
+    def get(self, request):
+        logout()
+        return render(request, 'home/index.html')
         
