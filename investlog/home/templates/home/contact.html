@@ -5,12 +5,13 @@
 {% block content %}
     <div class="container pe-1 px-5 py-5">
         <h2 class="mb-3">Contact</h2>
-        <!-- Bootstrap 5 starter form -->
-        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+        <form id="contactForm" method="post" action="contact">
+            {% csrf_token %}
             <!-- Name input -->
             <div class="mb-3">
                 <label class="form-label" for="name">Name</label>
                 <input class="form-control"
+                       name="name"
                        id="name"
                        type="text"
                        placeholder="Name"
@@ -21,6 +22,7 @@
             <div class="mb-3">
                 <label class="form-label" for="emailAddress">Email Address</label>
                 <input class="form-control"
+                       name="email"
                        id="emailAddress"
                        type="email"
                        placeholder="Email Address"
@@ -32,6 +34,7 @@
             <div class="mb-3">
                 <label class="form-label" for="message">Message</label>
                 <textarea class="form-control"
+                          name="message"
                           id="message"
                           type="text"
                           placeholder="Message"
