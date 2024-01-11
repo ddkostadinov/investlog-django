@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponse
 from django.contrib import messages
 from django.views import View
 from django.contrib.auth.models import User
@@ -41,8 +40,7 @@ class CustomLoginView(View):
         if user is not None:
             login(request, user)
             return redirect('dashboard')
-        else:
-            return render(request, 'users/login.html', {
+        return render(request, 'users/login.html', {
             'form': form
         })
     

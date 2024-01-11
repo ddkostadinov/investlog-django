@@ -32,7 +32,7 @@ class UserLoginForm(AuthenticationForm):
         model = User
         fields = ['username', 'password']
         error_messages = {
-            "email": {
+            "username": {
                 "required": "Please enter a value!",
                 "max_length": "Max characters exceeded!"
             },
