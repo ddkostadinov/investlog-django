@@ -17,23 +17,3 @@
   text-align: center;
   justify-content: center;
 }
-
-.messages {
-  padding: 10px;
-}
-
-.messages li {
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-}
-
-.success {
-  background-color: #dff0d8;
-  color: #3c763d;
-}
-
-.error {
-  background-color: #f2dede;
-  color: #a94442;
-}

@@ -7,6 +7,7 @@ class UserRegisterForm(UserCreationForm):
 
         self.fields['password1'].help_text = None
         self.fields['password2'].help_text = None
+        self.fields['email'].required = True
         
     class Meta:
         model = User
