@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import InvestmentForm
 
 
 class Overview(LoginRequiredMixin, View):
@@ -18,5 +19,9 @@ class Investments(LoginRequiredMixin, View):
 class AddInvestment(LoginRequiredMixin, View):
 
     def get(self, request):
+        form = InvestmentForm
         context = {'user': request.user}
-        return render(request, 'dashboard/add-investment.html', context=context)
+        return render(request, 'dashboard/add-investment.html', {
+            'context': context,
+            'form': form
+        })
