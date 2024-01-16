@@ -22,9 +22,9 @@ from users import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('dashboard/', include('dashboard.urls')), 
     path('', include('home.urls')), 
     path('login/', views.CustomLoginView.as_view(), name='login'),
     path('register/', views.RegisterView.as_view(), name='register'),
     path('logout/', views.LogOutView.as_view(), name='logout'),
+    path('<str:user>/', include('dashboard.urls')), 
 ]

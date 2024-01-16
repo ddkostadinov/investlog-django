@@ -39,7 +39,7 @@ class CustomLoginView(View):
         
         if user is not None:
             login(request, user)
-            return redirect('overview')
+            return redirect('overview', user)
         
         messages.error(request, 'Invalid credentials. Please try again.')
         return render(request, 'users/login.html', {
