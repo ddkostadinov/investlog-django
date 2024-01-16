@@ -10,7 +10,7 @@ from .models import InvestmentModel
 
 class Overview(LoginRequiredMixin, View):
 
-    def get(self, request):
+    def get(self, request, user):
         context = {'user': request.user}
         return render(request, 'dashboard/overview.html', context=context)
     
@@ -18,7 +18,7 @@ class Investments(LoginRequiredMixin, View):
     model = InvestmentModel
     template_name = 'investments.html'
     
-    def get(self, request):
+    def get(self, request, user):
         investments = InvestmentModel.objects.filter(user=self.request.user)
         context = {'user': request.user,
                    'investments': investments}
@@ -30,11 +30,11 @@ class AddInvestment(LoginRequiredMixin, CreateView):
     template_name = 'dashboard/add-investment.html'
     success_url = reverse_lazy('investments')
     
-    def form_valid(self, form):
+    def form_valid(self, form, user):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-    def get(self, request):
+    def get(self, request, user):
         form = InvestmentForm
         context = {'user': request.user}
         return render(request, 'dashboard/add-investment.html', {
