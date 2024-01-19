@@ -42,13 +42,8 @@
              class="nav-link {% if request.path == '/contact' %}active{% endif %}">Contact</a>
         </li>
         <li class="nav-item">
-          {% if user.username %}
-            <a href="{% url 'overview' user %}"
-               class="nav-link {% if request.path == '/dashboard' %}active{% endif %}">Dashboard</a>
-          {% else %}
-            <a href="{% url 'overview' user='user' %}"
-               class="nav-link {% if request.path == '/dashboard' %}active{% endif %}">Dashboard</a>
-          {% endif %}
+          <a href="{% url 'overview' %}"
+             class="nav-link {% if request.path == '/dashboard' %}active{% endif %}">Dashboard</a>
         </li>
       </ul>
       <div class="col-md-3 text-end">

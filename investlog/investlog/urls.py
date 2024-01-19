@@ -26,5 +26,5 @@ urlpatterns = [
     path('login/', views.CustomLoginView.as_view(), name='login'),
     path('register/', views.RegisterView.as_view(), name='register'),
     path('logout/', views.LogOutView.as_view(), name='logout'),
-    path('<str:user>/', include('dashboard.urls')), 
+    path('dashboard/', include('dashboard.urls')), 
 ]
