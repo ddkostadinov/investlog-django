@@ -46,7 +46,7 @@
             <a href="{% url 'overview' user %}"
                class="nav-link {% if request.path == '/dashboard' %}active{% endif %}">Dashboard</a>
           {% else %}
-            <a href="{% url 'overview' username='user' %}"
+            <a href="{% url 'overview' user='user' %}"
                class="nav-link {% if request.path == '/dashboard' %}active{% endif %}">Dashboard</a>
           {% endif %}
         </li>
