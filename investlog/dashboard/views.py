@@ -1,11 +1,16 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import InvestmentForm
 from .models import InvestmentModel
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+import matplotlib.pyplot as plt
+import numpy as np
+import plotly.express as px
 
 
 class Overview(LoginRequiredMixin, View):
@@ -54,3 +59,20 @@ class DeleteInvestment(LoginRequiredMixin, DeleteView):
     model = InvestmentModel
     template_name = 'dashboard/investments.html'
     success_url = reverse_lazy('investments')
+    
+class InvestmentGraphView(View):
+    def get(self, request, *args, **kwargs):
+        investments = InvestmentModel.objects.filter(user=request.user)
+
+        labels = [investment.name for investment in investments]
+
+        fig = px.bar(x=[investment.purchase_price for investment in investments], y=[investment.purchase_price for investment in investments])
+        graph = fig.to_html()
+        
+        
+
+        
+        context = {'user': request.user,
+                   'graph': graph
+                   }
+        return render(request, 'dashboard/graphs.html', context)

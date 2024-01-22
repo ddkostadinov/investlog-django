@@ -1,6 +1,6 @@
 # dashboard/urls.py
 from django.urls import path
-from .views import Overview, Investments, AddInvestment, EditInvestment, DeleteInvestment
+from .views import Overview, Investments, AddInvestment, EditInvestment, DeleteInvestment, InvestmentGraphView
 
 urlpatterns = [
     path('', Overview.as_view(), name='overview'),
@@ -8,4 +8,5 @@ urlpatterns = [
     path('add-investment/', AddInvestment.as_view(), name='add-investment'),
     path('edit-investment/<int:pk>', EditInvestment.as_view(), name='edit-investment'),
     path('delete-investment/<int:pk>', DeleteInvestment.as_view(), name='delete-investment'),
+    path('graph-investment/', InvestmentGraphView.as_view(), name='graph-investment'),
 ]
