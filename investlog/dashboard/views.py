@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import InvestmentForm
 from .models import InvestmentModel
 
@@ -41,3 +41,16 @@ class AddInvestment(LoginRequiredMixin, CreateView):
             'context': context,
             'form': form
         })
+
+class EditInvestment(LoginRequiredMixin, UpdateView):
+    model = InvestmentModel
+    form_class = InvestmentForm
+    template_name = 'dashboard/edit-investment.html'
+
+    def get_success_url(self):
+        return reverse_lazy('investments')
+
+class DeleteInvestment(LoginRequiredMixin, DeleteView):
+    model = InvestmentModel
+    template_name = 'dashboard/investments.html'
+    success_url = reverse_lazy('investments')

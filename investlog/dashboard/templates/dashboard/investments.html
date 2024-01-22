@@ -22,10 +22,11 @@
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
-                        <th scope="col">investment_type</th>
-                        <th scope="col">status</th>
-                        <th scope="col">purchase_date</th>
-                        <th scope="col">purchase_price</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Purchase date</th>
+                        <th scope="col">Purchase price</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,7 +37,14 @@
                             <td>{{ investment.status }}</td>
                             <td>{{ investment.purchase_date }}</td>
                             <td>{{ investment.purchase_price }}</td>
-                            <!-- Add more cells as needed -->
+                            <td>
+                                <a href="{% url 'edit-investment' pk=investment.pk %}">
+                                    <button type="button"
+                                            class="btn btn-sm btn-outline-primary d-flex align-items-center ">
+                                        Edit
+                                    </button>
+                                </a>
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>
