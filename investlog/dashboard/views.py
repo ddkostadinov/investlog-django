@@ -1,25 +1,21 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import InvestmentForm
 from .models import InvestmentModel
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-import matplotlib.pyplot as plt
-import numpy as np
 import plotly.express as px
 
 
-class Overview(LoginRequiredMixin, View):
+class OverviewView(LoginRequiredMixin, View):
 
     def get(self, request):
         context = {'user': request.user}
         return render(request, 'dashboard/overview.html', context=context)
     
-class Investments(LoginRequiredMixin, View):
+class InvestmentsView(LoginRequiredMixin, View):
     model = InvestmentModel
     template_name = 'investments.html'
     
@@ -29,7 +25,7 @@ class Investments(LoginRequiredMixin, View):
                    'investments': investments}
         return render(request, 'dashboard/investments.html', context=context)
     
-class AddInvestment(LoginRequiredMixin, CreateView):
+class AddInvestmentView(LoginRequiredMixin, CreateView):
     model = InvestmentModel
     form_class = InvestmentForm
     template_name = 'dashboard/add-investment.html'
@@ -37,6 +33,7 @@ class AddInvestment(LoginRequiredMixin, CreateView):
     
     def form_valid(self, form):
         form.instance.user = self.request.user
+        messages.success(self.request, 'Investment created successfully!')
         return super().form_valid(form)
 
     def get(self, request):
@@ -47,18 +44,22 @@ class AddInvestment(LoginRequiredMixin, CreateView):
             'form': form
         })
 
-class EditInvestment(LoginRequiredMixin, UpdateView):
+class EditInvestmentView(LoginRequiredMixin, UpdateView):
     model = InvestmentModel
     form_class = InvestmentForm
     template_name = 'dashboard/edit-investment.html'
 
     def get_success_url(self):
+        messages.success(self.request, 'Investment edited!')
         return reverse_lazy('investments')
 
-class DeleteInvestment(LoginRequiredMixin, DeleteView):
+class DeleteInvestmentView(LoginRequiredMixin, DeleteView):
     model = InvestmentModel
     template_name = 'dashboard/investments.html'
-    success_url = reverse_lazy('investments')
+    
+    def get_success_url(self):
+        messages.success(self.request, 'Investment deleted!')
+        return reverse_lazy('investments')
     
 class InvestmentGraphView(View):
     def get(self, request, *args, **kwargs):
@@ -68,11 +69,7 @@ class InvestmentGraphView(View):
 
         fig = px.bar(x=[investment.purchase_price for investment in investments], y=[investment.purchase_price for investment in investments])
         graph = fig.to_html()
-        
-        
-
-        
+    
         context = {'user': request.user,
-                   'graph': graph
-                   }
+                   'graph': graph}
         return render(request, 'dashboard/graphs.html', context)
