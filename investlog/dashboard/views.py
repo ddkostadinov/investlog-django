@@ -14,7 +14,8 @@ class OverviewView(LoginRequiredMixin, View):
     def get(self, request):
         context = {'user': request.user}
         return render(request, 'dashboard/overview.html', context=context)
-    
+
+
 class InvestmentsView(LoginRequiredMixin, View):
     model = InvestmentModel
     template_name = 'investments.html'
@@ -24,7 +25,8 @@ class InvestmentsView(LoginRequiredMixin, View):
         context = {'user': request.user,
                    'investments': investments}
         return render(request, 'dashboard/investments.html', context=context)
-    
+
+
 class AddInvestmentView(LoginRequiredMixin, CreateView):
     model = InvestmentModel
     form_class = InvestmentForm
@@ -36,13 +38,6 @@ class AddInvestmentView(LoginRequiredMixin, CreateView):
         messages.success(self.request, 'Investment created successfully!')
         return super().form_valid(form)
 
-    def get(self, request):
-        form = InvestmentForm
-        context = {'user': request.user}
-        return render(request, 'dashboard/add-investment.html', {
-            'context': context,
-            'form': form
-        })
 
 class EditInvestmentView(LoginRequiredMixin, UpdateView):
     model = InvestmentModel
@@ -53,6 +48,7 @@ class EditInvestmentView(LoginRequiredMixin, UpdateView):
         messages.success(self.request, 'Investment edited!')
         return reverse_lazy('investments')
 
+
 class DeleteInvestmentView(LoginRequiredMixin, DeleteView):
     model = InvestmentModel
     template_name = 'dashboard/investments.html'
@@ -60,7 +56,8 @@ class DeleteInvestmentView(LoginRequiredMixin, DeleteView):
     def get_success_url(self):
         messages.success(self.request, 'Investment deleted!')
         return reverse_lazy('investments')
-    
+
+
 class InvestmentGraphView(View):
     def get(self, request, *args, **kwargs):
         investments = InvestmentModel.objects.filter(user=request.user)
