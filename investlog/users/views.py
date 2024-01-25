@@ -53,7 +53,7 @@ class CustomLoginView(View):
         })
         
 class LogOutView(LoginRequiredMixin, View):
-    def get(self, request):
+    def post(self, request):
         logout(request)
         return redirect('index')
         

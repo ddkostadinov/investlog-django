@@ -188,7 +188,9 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link d-flex align-items-center gap-2"
-                                       href="{% url 'logout' %}">
+                                       data-bs-toggle="modal"
+                                       data-bs-target="#DeleteModal"
+                                       href="modal">
                                         <svg class="bi">
                                             <use xlink:href="#door-closed"></use>
                                         </svg>
@@ -196,6 +198,34 @@
                                     </a>
                                 </li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade"
+                     id="DeleteModal"
+                     tabindex="-1"
+                     aria-labelledby="DeleteModal"
+                     style="display: none"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="DeleteModal">Log out</h1>
+                                <button type="button"
+                                        class="btn-close"
+                                        data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to log out?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <form method="post" id="deleteForm" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="submit" class="btn btn-danger">Log out</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
