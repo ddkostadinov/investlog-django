@@ -33,8 +33,8 @@ class CustomLoginView(View):
     def post(self, request):
         form = UserLoginForm(request.POST)
         
-        username = request.POST.get("username", False)
-        password = request.POST.get("password", False)
+        username = request.POST.get("username")
+        password = request.POST.get("password")
         user = authenticate(username=username, password=password)
         
         if user is not None:

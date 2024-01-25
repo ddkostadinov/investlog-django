@@ -5,6 +5,7 @@
 {% block content %}
     <div class="container pe-1 px-5 py-5">
         <h2 class="mb-3">Contact</h2>
+        {% include 'home/includes/messages.html' %}
         <form id="contactForm" method="post" action="contact">
             {% csrf_token %}
             <!-- Name input -->
@@ -41,14 +42,6 @@
                           style="height: 10rem"
                           data-sb-validations="required"></textarea>
                 <div class="invalid-feedback" data-sb-feedback="message:required">Message is required.</div>
-            </div>
-            <!-- Form submissions success message -->
-            <div class="d-none" id="submitSuccessMessage">
-                <div class="text-center mb-3">Form submission successful!</div>
-            </div>
-            <!-- Form submissions error message -->
-            <div class="d-none" id="submitErrorMessage">
-                <div class="text-center text-danger mb-3">Error sending message!</div>
             </div>
             <!-- Form submit button -->
             <div class="d-grid">

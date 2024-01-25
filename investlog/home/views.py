@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.staticfiles.views import serve
+from django.contrib import messages
 import smtplib
 import dotenv
 import os
@@ -24,5 +25,6 @@ def contact(request):
                 to_addrs=os.environ.get("EMAIL_RECEIVER"),
                 msg=f"Subject:From {request.POST.get('name')}\n\nEmail:{request.POST.get('email')}\n\n{request.POST.get('message')}",
             )
+        messages.success(request, "Message sent successfully. Thank you for contacting us!")
     context = {'user': request.user}
     return render(request, 'home/contact.html', context)
