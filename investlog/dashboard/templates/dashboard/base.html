@@ -81,8 +81,10 @@
                         </div>
                         <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto ">
                             <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2 active"
+                                <li class="nav-item"
+                                    style="{% if request.path == '/dashboard/' %}background-color: #212529;
+                                           {% endif %}">
+                                    <a class="nav-link d-flex align-items-center gap-2 {% if request.path == '/dashboard/' %}active{% endif %}"
                                        aria-current="page"
                                        href="{% url 'overview' %}">
                                         <svg class="bi">
@@ -91,8 +93,10 @@
                                         Overview
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2"
+                                <li class="nav-item"
+                                    style="{% if request.path == '/dashboard/investments/' or request.path == '/dashboard/add-investment/' %}background-color: #212529;
+                                           {% endif %}">
+                                    <a class="nav-link d-flex align-items-center gap-2 {% if request.path == '/dashboard/investments/' or request.path == '/dashboard/add-investment/' %}active{% endif %}"
                                        href="{% url 'investments' %}">
                                         <svg class="bi">
                                             <use xlink:href="#file-earmark"></use>
@@ -100,8 +104,10 @@
                                         Investments
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2"
+                                <li class="nav-item"
+                                    style="{% if request.path == '/dashboard/graph-investment/' %}background-color: #212529;
+                                           {% endif %}">
+                                    <a class="nav-link d-flex align-items-center gap-2 {% if request.path == '/dashboard/graph-investment/' %}active{% endif %}"
                                        href="{% url 'graph-investment' %}">
                                         <svg class="bi">
                                             <use xlink:href="#cart"></use>
