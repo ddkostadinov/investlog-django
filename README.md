@@ -1,20 +1,10 @@
-# InvestLog [![GitHub](https://img.shields.io/github/license/ddkostadinov/investlog?color=yellow)](https://github.com/ddkostadinov/investlog/blob/main/LICENSE)
+# InvestLog [![GitHub](https://img.shields.io/github/license/ddkostadinov/investlog?color=red)](https://github.com/ddkostadinov/investlog/blob/main/LICENSE)
 
 ## A minimalistic, easy-to-use application for logging and managing investments!
 
-<p align="center">
-  <kbd>
-<img src="https://user-images.githubusercontent.com/53429438/106779355-e9cd9e80-666c-11eb-9417-8a4b54441bc6.gif"></img>
-  </kbd>
-</p>
+If you'd like to **contribute** and make this much better for other users, have a look at [Issues](https://github.com/ddkostadinov/investlog/issues).
 
-Just change `src/portfolio.js` to get your personal portfolio. Customize portfolio theme by using your own color scheme globally in the `src/_globalColor.scss` file. Feel free to use it as-is or personalize it as much as you want.
-
-If you'd like to **contribute** and make this much better for other users, have a look at [Issues](https://github.com/saadpasta/developerFolio/issues).
-
-Created something awesome for your fork of the portfolio and want to share it? Feel free to open a [pull request](https://github.com/saadpasta/developerFolio/pulls).
-
-To view a live example, **[click here](https://developerfolio.js.org/)**.
+Created something awesome for your fork of the portfolio and want to share it? Feel free to open a [pull request](https://github.com/ddkostadinov/investlog/pulls).
 
 ## Getting Started
 
@@ -99,46 +89,19 @@ python manage.py runserver
 
 Now you can check your application at [localhost](http://localhost:8000).
 
-## Deployment
-
-When you are done with the setup, you should host your website online.
-We highly recommend to read through the [Deploying on GitHub Pages](https://create-react-app.dev/docs/deployment/#github-pages) docs for React.
-
-#### Deploying to GitHub Pages
-
-This section guides you to deploy your portfolio on GitHub pages.
-
-- Navigate to `package.json` and enter your domain name instead of `https://developerfolio.js.org/` in `homepage` variable. For example, if you want your site to be `https://<your-username>.github.io/developerFolio`, add the same to the homepage section of `package.json`.
-
-- In short you can also add `/devloperFolio` to `package.json` as both are exactly same. Upon doing so, you tell `create-react-app` to add the path assets accordingly.
-
-- Optionally, configure the domain. You can configure a custom domain with GitHub Pages by adding a `CNAME` file to the `public/` folder.
-
-- Follow through the guide to setup GitHub pages from the official CRA docs [here](https://create-react-app.dev/docs/deployment/#github-pages).
-
-#### Deploying to Netlify
-
-You could also host directly with Netlify by linking your own repository.
-
-[![Deploy To Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/saadpasta/developerFolio)
-
-For more information, read [hosting on Netlify](https://create-react-app.dev/docs/deployment/#netlify).
-
 ## Sections
 
-✔️ Summary and About me\
-✔️ Skills\
-✔️ Education\
-✔️ Work Experience\
-✔️ Open Source Projects Connected with GitHub\
-✔️ Big Projects\
-✔️ Achievements And Certifications 🏆\
-✔️ Blogs\
-✔️ Talks\
-✔️ Podcast\
-✔️ Contact me\
-✔️ Twitter Timeline\
-✔️ GitHub Profile
+✔️ Home\
+✔️ Contact\
+✔️ About\
+✔️ Login\
+✔️ Logout\
+✔️ Register\
+✔️ Dashboard\
+✔️ Add Investment\
+✔️ Edit Investment\
+✔️ Delete Investment\
+✔️ Graphs\
 
 ## Technologies Used
 
