@@ -61,12 +61,25 @@ class DeleteInvestmentView(LoginRequiredMixin, DeleteView):
 class InvestmentGraphView(View):
     def get(self, request, *args, **kwargs):
         investments = InvestmentModel.objects.filter(user=request.user)
+        
+        if len(investments) == 0:
+            messages.warning(self.request, message="No investments found.")
+            return render(request, 'dashboard/graphs.html')
 
         labels = [investment.name for investment in investments]
 
-        fig = px.bar(x=[investment.purchase_price for investment in investments], y=[investment.purchase_price for investment in investments])
+        fig = px.bar(x=[investment.name for investment in investments], y=[investment.purchase_price for investment in investments])
+        fig.update_layout(plot_bgcolor="#212529", paper_bgcolor="#212529", width=500, height=300)
         graph = fig.to_html()
+        
+        line_fig = px.line(x=[investment.name for investment in investments], y=[investment.purchase_price for investment in investments])
+        line_fig.update_layout(plot_bgcolor="#212529", paper_bgcolor="#212529", width=500, height=300)
+        
+        line_graph = line_fig.to_html()
+        
     
         context = {'user': request.user,
-                   'graph': graph}
+                   'investments': investments,
+                   'graph': graph,
+                   'line_graph': line_graph}
         return render(request, 'dashboard/graphs.html', context)
