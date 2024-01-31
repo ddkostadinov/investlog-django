@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.views import View
 from django.contrib.auth.models import User
-from .forms import UserRegisterForm, UserLoginForm
+from .forms import UserRegisterForm, UserLoginForm, UsernameChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
@@ -62,7 +62,8 @@ class LogOutView(LoginRequiredMixin, View):
 class SettingsView(LoginRequiredMixin, View):
     
     def get(self, request):
-        context = {'user': request.user}
+        username_change_form = UsernameChangeForm()
+        context = {'user': request.user, 'form': username_change_form}
         return render(request, 'users/settings.html', context=context)        
 
 class UsernameChangeView(LoginRequiredMixin, View):
