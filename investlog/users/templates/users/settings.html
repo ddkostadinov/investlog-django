@@ -1,0 +1,28 @@
+{% extends "dashboard/base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Investments
+{% endblock title %}
+{% block content %}
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Settings</h1>
+        </div>
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+            <h1 class="h4">Change Username</h1>
+            <form data-bitwarden-watching="1" method="post" action="" novalidate>
+                {% csrf_token %}
+                <div class="form-floating">{{ form|crispy }}</div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-lg btn-primary w-100 py-2 mb-4">Create investment</button>
+                </div>
+            </form>
+        </div>
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+            <h1 class="h4">Change Password</h1>
+        </div>
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+            <h1 class="h4">Delete Account</h1>
+        </div>
+    </main>
+{% endblock content %}

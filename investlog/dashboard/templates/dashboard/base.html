@@ -184,8 +184,10 @@
                             </ul>
                             <hr class="my-3">
                             <ul class="nav flex-column mb-auto">
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2"
+                                <li class="nav-item"
+                                    style="{% if request.path == '/users/settings/' %}background-color: #212529;
+                                           {% endif %}">
+                                    <a class="nav-link d-flex align-items-center gap-2 {% if request.path == '/users/settings/' %}active{% endif %}"
                                        href="{% url 'settings' %}">
                                         <svg class="bi">
                                             <use xlink:href="#gear-wide-connected"></use>

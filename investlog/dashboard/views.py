@@ -85,8 +85,3 @@ class InvestmentGraphView(LoginRequiredMixin, View):
         return render(request, 'dashboard/graphs.html', context)
     
 
-class SettingsView(LoginRequiredMixin, View):
-    
-    def get(self, request):
-        context = {'user': request.user}
-        return render(request, 'dashboard/settings.html', context=context)

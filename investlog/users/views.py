@@ -52,8 +52,18 @@ class CustomLoginView(View):
             'form': form
         })
         
+        
 class LogOutView(LoginRequiredMixin, View):
     def post(self, request):
         logout(request)
         return redirect('index')
         
+        
+class SettingsView(LoginRequiredMixin, View):
+    
+    def get(self, request):
+        context = {'user': request.user}
+        return render(request, 'users/settings.html', context=context)        
+
+class UsernameChangeView(LoginRequiredMixin, View):
+    pass
