@@ -27,5 +27,6 @@ urlpatterns = [
     path('register/', views.RegisterView.as_view(), name='register'),
     path('logout/', views.LogOutView.as_view(), name='logout'),
     path('settings/', views.SettingsView.as_view(), name='settings'),
+    path('change-username/', views.UsernameChangeView.as_view(), name='change-username'),
     path('dashboard/', include('dashboard.urls')), 
 ]

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views import View
 from django.contrib.auth.models import User
@@ -60,11 +61,18 @@ class LogOutView(LoginRequiredMixin, View):
         
         
 class SettingsView(LoginRequiredMixin, View):
-    
     def get(self, request):
         username_change_form = UsernameChangeForm()
         context = {'user': request.user, 'form': username_change_form}
         return render(request, 'users/settings.html', context=context)        
 
 class UsernameChangeView(LoginRequiredMixin, View):
-    pass
+    #TODO Fix bug with username to be equal to request.user.username
+    def post(self, request):
+        form = UsernameChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your username has been updated successfully.')
+            return redirect('settings')
+        messages.error(request, "Username not changed. Try again!")
+        return redirect('settings')
