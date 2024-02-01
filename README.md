@@ -102,6 +102,8 @@ Now you can check your application at [localhost](http://localhost:8000).
 ✔️ Edit Investment\
 ✔️ Delete Investment\
 ✔️ Graphs\
+✔️ Change Username\
+
 
 ## Technologies Used
 
