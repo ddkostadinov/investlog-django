@@ -30,14 +30,17 @@ class UsernameChangeForm(forms.ModelForm):
         fields = ['username']
         
     def clean_new_username(self):
-        new_username = self.cleaned_data['new_username']
-        if User.objects.filter(username=new_username).exists():
+        new_username = self.cleaned_data.get('new_username')
+        current_username = self.cleaned_data.get('username')
+        
+        if User.objects.filter(username=new_username).exists() or current_username != self.instance.username:
             raise forms.ValidationError('This username is already taken. Please choose a different one.')
         return new_username
 
     def save(self, commit=True):
         user = super().save(commit=False)
         user.username = self.cleaned_data['new_username']
+
         if commit:
             user.save()
         return user

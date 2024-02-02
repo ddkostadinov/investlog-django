@@ -70,6 +70,7 @@ class UsernameChangeView(LoginRequiredMixin, View):
     #TODO Fix bug with username to be equal to request.user.username
     def post(self, request):
         form = UsernameChangeForm(request.POST, instance=request.user)
+
         if form.is_valid():
             form.save()
             messages.success(request, 'Your username has been updated successfully.')
