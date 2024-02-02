@@ -67,13 +67,12 @@ class SettingsView(LoginRequiredMixin, View):
         return render(request, 'users/settings.html', context=context)        
 
 class UsernameChangeView(LoginRequiredMixin, View):
-    #TODO Fix bug with username to be equal to request.user.username
     def post(self, request):
         form = UsernameChangeForm(request.POST, instance=request.user)
 
         if form.is_valid():
             form.save()
             messages.success(request, 'Your username has been updated successfully.')
-            return redirect('settings')
-        messages.error(request, "Username not changed. Try again!")
+        else:
+            messages.error(request, "Username not changed. Try again!")
         return redirect('settings')
