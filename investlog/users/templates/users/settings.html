@@ -1,0 +1,28 @@
+{% extends "dashboard/base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Settings
+{% endblock title %}
+{% block content %}
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Settings</h1>
+        </div>
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h4">Change Username</h1>
+        </div>
+        {% include 'home/includes/messages.html' %}
+        <div class="w-50">
+            <form data-bitwarden-watching="1"
+                  method="post"
+                  action="{% url 'change-username' %}"
+                  novalidate>
+                {% csrf_token %}
+                <div class="form-floating">{{ form|crispy }}</div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-md btn-primary w-50 py-2 mb-4">Change Username</button>
+                </div>
+            </form>
+        </div>
+    </main>
+{% endblock content %}

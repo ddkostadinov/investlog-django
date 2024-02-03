@@ -9,4 +9,5 @@ urlpatterns = [
     path('edit-investment/<int:pk>', EditInvestmentView.as_view(), name='edit-investment'),
     path('delete-investment/<int:pk>', DeleteInvestmentView.as_view(), name='delete-investment'),
     path('graph-investment/', InvestmentGraphView.as_view(), name='graph-investment'),
+    
 ]

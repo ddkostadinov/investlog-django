@@ -58,7 +58,7 @@ class DeleteInvestmentView(LoginRequiredMixin, DeleteView):
         return reverse_lazy('investments')
 
 
-class InvestmentGraphView(View):
+class InvestmentGraphView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         investments = InvestmentModel.objects.filter(user=request.user)
         
@@ -83,3 +83,5 @@ class InvestmentGraphView(View):
                    'graph': graph,
                    'line_graph': line_graph}
         return render(request, 'dashboard/graphs.html', context)
+    
+
