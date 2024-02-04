@@ -1,6 +1,6 @@
 # InvestLog [![GitHub](https://img.shields.io/github/license/ddkostadinov/investlog?color=red)](https://github.com/ddkostadinov/investlog/blob/main/LICENSE)
 
-## A minimalistic, easy-to-use application for logging and managing investments!
+## A full-stack, easy-to-use application for logging and managing investments!
 
 If you'd like to **contribute** and make this much better for other users, have a look at [Issues](https://github.com/ddkostadinov/investlog/issues).
 
