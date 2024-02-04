@@ -4,7 +4,8 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views import View
 from django.contrib.auth.models import User
-from .forms import UserRegisterForm, UserLoginForm, UsernameChangeForm, PasswordChangeForm
+from .forms import UserRegisterForm, UserLoginForm, UsernameChangeForm
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 

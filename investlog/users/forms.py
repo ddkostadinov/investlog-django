@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django import forms
 class UserRegisterForm(UserCreationForm):
@@ -44,30 +44,3 @@ class UsernameChangeForm(forms.ModelForm):
         if commit:
             user.save()
         return user
-    
-class PasswordChangeForm(PasswordChangeForm):
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     self.fields['password'].help_text = None
-        
-    # new_password = forms.CharField(label='New Password', max_length=150)
-
-    class Meta:
-        model = User
-        fields = ['__all__']
-        
-    # def clean_new_password(self):
-    #     new_password = self.cleaned_data.get('new_password')
-    #     current_password = self.cleaned_data.get('password')
-        
-    #     if User.objects.filter(password=new_password).exists() or current_password != self.instance.password:
-    #         raise forms.ValidationError('This password is already taken. Please choose a different one.')
-    #     return new_password
-
-    # def save(self, commit=True):
-    #     user = super().save(commit=False)
-    #     user.password = self.cleaned_data['new_password']
-
-    #     if commit:
-    #         user.save()
-    #     return user
