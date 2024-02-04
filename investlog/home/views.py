@@ -18,6 +18,7 @@ def about(request):
 
 
 def contact(request):
+    context = {'user': request.user}
     if request.method == "POST":
         with smtplib.SMTP("smtp.gmail.com") as connection:
             connection.starttls()
@@ -28,5 +29,4 @@ def contact(request):
                 msg=f"Subject:From {request.POST.get('name')}\n\nEmail:{request.POST.get('email')}\n\n{request.POST.get('message')}",
             )
         messages.success(request, "Message sent successfully. Thank you for contacting us!")
-    context = {'user': request.user}
     return render(request, 'home/contact.html', context)
