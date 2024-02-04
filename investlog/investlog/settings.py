@@ -140,8 +140,12 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Crispy forms import
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+# Message tags for Bootstrap
 
 MESSAGE_TAGS = {
         messages.DEBUG: 'alert-secondary',
@@ -150,3 +154,13 @@ MESSAGE_TAGS = {
         messages.WARNING: 'alert-warning',
         messages.ERROR: 'alert-danger',
  }
+
+# Email credentials and backend
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # For development environment
+EMAIL_RECEIVER = os.environ.get("EMAIL_RECEIVER")
+EMAIL_HOST_USER = os.environ.get("EMAIL_SENDER_NAME")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_SENDER_PASSWORD")
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
