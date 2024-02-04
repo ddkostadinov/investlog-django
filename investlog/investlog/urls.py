@@ -28,5 +28,6 @@ urlpatterns = [
     path('logout/', views.LogOutView.as_view(), name='logout'),
     path('settings/', views.SettingsView.as_view(), name='settings'),
     path('change-username/', views.UsernameChangeView.as_view(), name='change-username'),
+    path('change-password/', views.PasswordChangeView.as_view(), name='change-password'),
     path('dashboard/', include('dashboard.urls')), 
 ]
