@@ -9,6 +9,21 @@
             <h1 class="h2">Settings</h1>
         </div>
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h4">Change Password</h1>
+        </div>
+        <div class="w-50">
+            <form data-bitwarden-watching="1"
+                  method="post"
+                  action="{% url 'change-password' %}"
+                  novalidate>
+                {% csrf_token %}
+                <div class="form-floating">{{ password_form|crispy }}</div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-md btn-primary w-50 py-2 mb-4">Change Password</button>
+                </div>
+            </form>
+        </div>
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h4">Change Username</h1>
         </div>
         {% include 'home/includes/messages.html' %}
@@ -21,21 +36,6 @@
                 <div class="form-floating">{{ username_form|crispy }}</div>
                 <div class="d-grid">
                     <button type="submit" class="btn btn-md btn-primary w-50 py-2 mb-4">Change Username</button>
-                </div>
-            </form>
-        </div>
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h4">Change Password</h1>
-        </div>
-        <div class="w-50">
-            <form data-bitwarden-watching="1"
-                  method="post"
-                  action="{% url 'change-password' %}"
-                  novalidate>
-                {% csrf_token %}
-                <div class="form-floating">{{ password_form|crispy }}</div>
-                <div class="d-grid">
-                    <button type="submit" class="btn btn-md btn-primary w-50 py-2 mb-4">Change Password</button>
                 </div>
             </form>
         </div>

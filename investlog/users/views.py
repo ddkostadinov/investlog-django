@@ -63,21 +63,11 @@ class LogOutView(LoginRequiredMixin, View):
         
 class SettingsView(LoginRequiredMixin, View):
     def get(self, request):
-        username_change_form = UsernameChangeForm()
         password_change_form = PasswordChangeForm(request.user)
-        context = {'user': request.user, 'username_form': username_change_form, 'password_form': password_change_form}
+        username_change_form = UsernameChangeForm()
+        context = {'user': request.user, 'password_form': password_change_form, 'username_form': username_change_form}
         return render(request, 'users/settings.html', context=context)        
 
-class UsernameChangeView(LoginRequiredMixin, View):
-    def post(self, request):
-        form = UsernameChangeForm(request.POST, instance=request.user)
-
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your username has been updated successfully.')
-        else:
-            messages.error(request, "Username not changed. Try again!")
-        return redirect('settings')
 
 class PasswordChangeView(LoginRequiredMixin, View):
     def post(self, request):
@@ -88,4 +78,16 @@ class PasswordChangeView(LoginRequiredMixin, View):
             messages.success(request, 'Your password has been updated successfully.')
         else:
             messages.error(request, "Password not changed. Try again!")
+        return redirect('settings')
+    
+    
+class UsernameChangeView(LoginRequiredMixin, View):
+    def post(self, request):
+        form = UsernameChangeForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your username has been updated successfully.')
+        else:
+            messages.error(request, "Username not changed. Try again!")
         return redirect('settings')
